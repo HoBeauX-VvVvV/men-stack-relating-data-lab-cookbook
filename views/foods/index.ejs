@@ -8,5 +8,10 @@
   <body>
     <%- include('./partials/_navbar.ejs') %>
     <h1>Welcome to my Pantry</h1>
+    <ul>
+      <%= foods.forEach((food) => { %>
+        <li><%= food.name %> is a <%= food.catagory %><li>
+      <%  }) %>
+    </ul>
   </body>
 </html>

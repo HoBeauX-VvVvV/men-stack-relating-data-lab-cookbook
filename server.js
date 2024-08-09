@@ -11,14 +11,18 @@ const authController = require('./controllers/auth.js');
 const foodsController = require('./controllers/foods.js');
 
 const isSignedIn = require('./middleware/is-signed-in.js');
-const passUserToVeiw = require('./middleware/pass-user-to-veiw.js');
+const passUserToView = require('./middleware/pass-user-to-view.js');
 
 const port = process.env.PORT ? process.env.PORT : '3000';
 
 mongoose.connect(process.env.MONGODB_URI);
 
-mongoose.connection.on('connected', () => {
-  console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
+mongoose.connection.once('open', () => {
+ console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
+});
+
+mongoose.connection.on('error', () => {
+  console.log(`MongoDB is trippin' again`)
 });
 
 app.use(express.urlencoded({ extended: false }));
