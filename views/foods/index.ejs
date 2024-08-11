@@ -6,12 +6,24 @@
     <title>My Pantry</title>
   </head>
   <body>
-    <%- include('./partials/_navbar.ejs') %>
+    <%- include('../partials/_navbar.ejs') %>
+    <% if(user) { %>
     <h1>Welcome to my Pantry</h1>
+    <h2>These are the foods I have in my pantry:</h2>
     <ul>
-      <%= foods.forEach((food) => { %>
-        <li><%= food.name %> is a <%= food.catagory %><li>
+      <% foods.forEach((food) => { %>
+        <li><%= food.name %><br/>
+       Id#- <%= food._id %>
+       <form
+       action="/users/<%= user._id %>/foods/<%= food._id %>?_method=DELETE"
+       method="POST">
+       <button type="submit">Delete this food</button>
+     </form></li>  
       <%  }) %>
     </ul>
+    <a href="/users/<%=user._id%>/foods/new">Add a new food</a>
+    <% } else { %><a href="/auth/sign-up">Sign Up</a>to start your pantry
+    <% } %>
+   
   </body>
 </html>

@@ -6,10 +6,10 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 const morgan = require('morgan');
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
 
 const authController = require('./controllers/auth.js');
 const foodsController = require('./controllers/foods.js');
-
 const isSignedIn = require('./middleware/is-signed-in.js');
 const passUserToView = require('./middleware/pass-user-to-view.js');
 
@@ -33,6 +33,9 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGODB_URI
+    })
   })
 );
 

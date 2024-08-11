@@ -9,10 +9,10 @@
 <body>
   <h1>Create a New Food!</h1>
   <%- include('../partials/_navbar.ejs') %>
-  <form action="/users/<%= user._id %>/foods" method="POST">
+  <form action="/users/<%= user._id %>/foods/<%= food._id %>?_method=PUT" method="POST">
     <label for="name">Name:</label>
     <input type="text" name="name" id="name">
-    <button type="submit">Add Food</button>
+    <button type="submit">Edit Food</button>
   </form>
   <a href="/users/<%= user._id %>/foods/">Back to Food</a>
 </body>
