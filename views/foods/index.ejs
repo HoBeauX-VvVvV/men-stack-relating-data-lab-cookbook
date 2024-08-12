@@ -15,10 +15,14 @@
         <li><%= food.name %><br/>
        Id#- <%= food._id %>
        <form
-       action="/users/<%= user._id %>/foods/<%= food._id %>?_method=DELETE"
-       method="POST">
-       <button type="submit">Delete this food</button>
-     </form></li>  
+          action="/users/<%= user._id %>/foods/<%= food._id %>/edit">
+          <button type="submit">Edit this food</button>
+       </form>
+       <form
+          action="/users/<%= user._id %>/foods/<%= food._id %>?_method=DELETE"
+          method="POST">
+          <button type="submit">Delete this food</button>
+       </form></li>  
       <%  }) %>
     </ul>
     <a href="/users/<%=user._id%>/foods/new">Add a new food</a>

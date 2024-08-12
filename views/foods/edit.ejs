@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/assets/css/styles.css"/>
-  <title>Create a Food</title>
+  <title>Edit Food</title>
 </head>
 <body>
-  <h1>Create a New Food!</h1>
+  <h1>Edit this Food!</h1>
   <%- include('../partials/_navbar.ejs') %>
   <form action="/users/<%= user._id %>/foods/<%= food._id %>?_method=PUT" method="POST">
     <label for="name">Name:</label>
-    <input type="text" name="name" id="name">
+    <input type="text" name="name" id="name" value="<%= food.name %>">
     <button type="submit">Edit Food</button>
   </form>
   <a href="/users/<%= user._id %>/foods/">Back to Food</a>
